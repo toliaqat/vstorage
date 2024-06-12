@@ -16,9 +16,14 @@ import apiEndpoints from "./config";
 import { cleanJSON } from "./utils";
 
 const App = () => {
+  const searchParams = new URLSearchParams(window.location.search);
+
   const [columns, setColumns] = useState([]);
   const [dataView, setDataView] = useState("");
-  const [apiEndpoint, setApiEndpoint] = useState(apiEndpoints[0].value);
+  const [apiEndpoint, setApiEndpoint] = useState(
+    apiEndpoints.find((x) => x.value === searchParams.get("endpoint"))?.value ||
+      apiEndpoints[0].value
+  );
 
   useEffect(() => {
     fetchChildren(apiEndpoint, "published").then((data) =>
@@ -29,6 +34,22 @@ const App = () => {
         },
       ])
     );
+  }, [apiEndpoint]);
+
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams(window.location.search);
+    newSearchParams.set("endpoint", apiEndpoint);
+
+    if (window.history.pushState) {
+      const newurl =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        window.location.pathname +
+        "?" +
+        newSearchParams.toString();
+      window.history.pushState({ path: newurl }, "", newurl);
+    }
   }, [apiEndpoint]);
 
   const handleItemSelected = async (itemName, columnIndex) => {
