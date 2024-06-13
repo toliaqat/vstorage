@@ -14,6 +14,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { fetchChildren, fetchData } from "./api";
 import apiEndpoints from "./config";
 import { cleanJSON } from "./utils";
+import SplitPane from 'react-split-pane';
+
+// Import app.css for styling
+import './App.css';
 
 const updateQueryParam = (key, value) => {
   const params = new URLSearchParams(window.location.search);
@@ -119,8 +123,8 @@ const App = () => {
   const dataToShow = columns.at(-1).items.length === 0 && dataView;
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: "#ed2c2c" }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+      <AppBar position="static" sx={{ bgcolor: "#ed2c2c", zIndex: 1100 }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -153,10 +157,16 @@ const App = () => {
           </Select>
         </Toolbar>
       </AppBar>
-      <Box>
+      <SplitPane
+        split="horizontal" // or "vertical" based on your layout
+        defaultSize="50%"
+        minSize={100}
+        maxSize={500}
+        style={{ position: 'relative', width: '100%', height: '100%' }}
+      >
         <MillerColumns columns={columns} onItemSelected={handleItemSelected} />
         <ContentPane content={dataToShow} />
-      </Box>
+      </SplitPane>
     </Box>
   );
 };

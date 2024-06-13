@@ -13,15 +13,19 @@ const ContentPane = ({ content }) => {
   };
 
   const json = parseJson(content);
+  if (!content) {
+    return null;
+  }
   return (
     <Box
-      height="50vh"
+      flex="1"
       bgcolor="#ffffff"
       borderRadius="8px"
       boxShadow="0 2px 4px rgba(0,0,0,0.5)"
       margin="10px"
       overflow="auto"
       padding={2}
+      style={{ whiteSpace: 'pre-wrap' }}
     >
       {json ? (
         <ReactJson
