@@ -16,7 +16,6 @@ import apiEndpoints from "./config";
 import { cleanJSON } from "./utils";
 import SplitPane from 'react-split-pane';
 
-// Import app.css for styling
 import './App.css';
 
 const updateQueryParam = (key, value) => {
