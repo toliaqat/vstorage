@@ -9,7 +9,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
   }
 
   return (
-    <Box display="flex" height="50vh" overflow="hidden" bgcolor="#f7f7f7">
+    <Box display="flex" height="100%" width="100%" overflow="hidden" bgcolor="#f7f7f7">
       {fullColumns.map((column, columnIndex) => (
         <List
           key={columnIndex}
@@ -19,6 +19,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
             overflowY: "auto",
             borderRadius: "8px",
             backgroundColor: "#ffffff",
+            maxHeight: "500px",
             margin: "10px 5px",
             boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
           }}
@@ -31,6 +32,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                 onClick={() => onItemSelected(item.name, columnIndex)}
                 selected={item.isSelected}
                 style={{
+
                   backgroundColor: item.isSelected ? "#FFBC0A" : "transparent",
                   padding: "0px 16px",
                 }}
