@@ -18,7 +18,7 @@ import { cleanJSON } from "./utils";
 const updateQueryParam = (key, value) => {
   const params = new URLSearchParams(window.location.search);
   params.set(key, value);
-  const newUrl = `$${window.location.protocol}//${window.location.host}${
+  const newUrl = `${window.location.protocol}//${window.location.host}${
     window.location.pathname
   }?${params.toString()}`;
   window.history.pushState({ path: newUrl }, "", newUrl);
@@ -112,9 +112,12 @@ const App = () => {
   };
 
   const handleEndpointChange = (event) => {
+    setColumns(getInitialColumns(null));
     setApiEndpoint(event.target.value);
   };
+
   const dataToShow = columns.at(-1).items.length === 0 && dataView;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ bgcolor: "#ed2c2c" }}>
