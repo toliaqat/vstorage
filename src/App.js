@@ -28,7 +28,7 @@ const updateQueryParam = (key, value) => {
 };
 
 const getInitialColumns = (path) => {
-  const defaultColumn = { items: [], selected: "published" };
+  const defaultColumn = { items: [] };
   if (!path) return [defaultColumn];
 
   const pathElements = path.split(".");
@@ -55,7 +55,7 @@ const App = () => {
     const columnPaths = columns.map((_, idx) =>
       columns
         .slice(0, idx + 1)
-        .map((col) => col.selected)
+        .map((col) => col.selected).filter((x) => x !== undefined)
         .join(".")
     );
     // Fetch columns
