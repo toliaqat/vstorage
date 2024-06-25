@@ -14,8 +14,8 @@ const MillerColumns = ({ columns, onItemSelected }) => {
         <List
           key={columnIndex}
           style={{
-            minWidth: "16.666%",
-            maxWidth: "16.666%",
+            minWidth: '200px',
+            width: 'auto',
             overflowY: "auto",
             borderRadius: "8px",
             backgroundColor: "#ffffff",
