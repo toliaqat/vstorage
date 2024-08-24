@@ -1,13 +1,27 @@
-export function cleanJSON(input) {
-  return input
-    .replace(/\\\\/g, "") // Removes double backslashes
-    .replace(/"#{/g, "{") // Replaces `"#{` with `{`
-    .replace(/"\{/g, "{") // Replaces `"{` with `{`
-    .replace(/\}"/g, "}") // Replaces `}"` with `}`
-    .replace(/"#\[/g, "[") // Replaces `"#[` with `[`
-    .replace(/\]"/g, "]") // Replaces `]"` with `]`
-    .replace(/\\{/g, "{") // Replaces `\\{` (again for potential duplicates)
-    .replace(/\}"/g, "}") // Replaces `}"` (again for potential duplicates)
-    .replace(/\\"/g, '"') // Replaces escaped quotes with normal quotes
-    .replace(/\}"/g, "}"); // Replaces `}"` (again for potential duplicates)
-}
+/**
+ *
+ * @param {string} str
+ */
+const parseString = (str) => {
+  try {
+    return JSON.parse(str.startsWith("#") ? str.slice(1) : str);
+  } catch (error) {
+    console.log(`Error while parsing value "${str}": `, error);
+    return str;
+  }
+};
+
+export const cleanJSON = (input) =>
+  typeof input !== "object" || !input
+    ? input
+    : Array.isArray(input)
+    ? input.map((_) => cleanJSON(typeof _ === "string" ? parseString(_) : _))
+    : Object.entries(input).reduce(
+        (acc, [key, value]) => ({
+          ...acc,
+          [key]: cleanJSON(
+            typeof value === "string" ? parseString(value) : value
+          ),
+        }),
+        {}
+      );
