@@ -12,7 +12,7 @@ const parseString = (str) => {
 };
 
 export const cleanJSON = (input) =>
-  typeof input !== "object"
+  typeof input !== "object" || !input
     ? input
     : Array.isArray(input)
     ? input.map((_) => cleanJSON(typeof _ === "string" ? parseString(_) : _))
