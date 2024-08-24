@@ -78,7 +78,7 @@ const App = () => {
 
     // Fetch data
     fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {
-      setDataView(cleanJSON(JSON.stringify(data), null, 2));
+      setDataView(JSON.stringify(cleanJSON(data)));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiEndpoint, path]);
