@@ -46,6 +46,7 @@ const App = () => {
   const [path, setPath] = useState(searchParams.get("path"));
   const [columns, setColumns] = useState(getInitialColumns(path));
   const [dataView, setDataView] = useState("");
+  const [blockHeight, setBlockHeight] = useState("");
   const initialEndpoint = searchParams.get("endpoint") || apiEndpoints[0].value;
   const [apiEndpoint, setApiEndpoint] = useState(initialEndpoint);
 
@@ -77,6 +78,9 @@ const App = () => {
     // Fetch data
     fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {
       setDataView(JSON.stringify(cleanJSON(data)));
+      if (data.blockHeight) {
+        setBlockHeight(data.blockHeight);
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiEndpoint, path]);
@@ -139,7 +143,9 @@ const App = () => {
           </Typography>
           <input
             type="number"
+            value={blockHeight}
             placeholder="Block Height"
+            readOnly
             style={{
               width: "100px",
               marginRight: "10px",
