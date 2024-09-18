@@ -11,8 +11,6 @@ import {
   MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { fetchChildren, fetchData } from "./api";
 import apiEndpoints from "./config";
 import { cleanJSON } from "./utils";
@@ -140,38 +138,53 @@ const App = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             VStorage Explorer
           </Typography>
-          <IconButton
-            size="small"
-            color="inherit"
-            aria-label="decrease block height"
-            sx={{ mr: 1 }}
-          >
-            <ArrowLeftIcon />
-          </IconButton>
-          <input
-            type="number"
-            value={blockHeight}
-            placeholder="Block Height"
-            readOnly
-            style={{
-              width: "100px",
-              marginRight: "10px",
-              padding: "5px",
-              borderRadius: "4px",
-              border: "1px solid #ccc",
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-              color: "white",
-              borderColor: "#ccc", // Neutral color for border
-            }}
-          />
-          <IconButton
-            size="small"
-            color="inherit"
-            aria-label="increase block height"
-            sx={{ ml: 1, mr: 2 }}
-          >
-            <ArrowRightIcon />
-          </IconButton>
+          <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
+            <button
+              onClick={() => setBlockHeight((prev) => Math.max(0, prev - 1))}
+              style={{
+                width: "30px",
+                height: "30px",
+                borderRadius: "50%",
+                border: "none",
+                backgroundColor: "#ed2c2c",
+                color: "white",
+                cursor: "pointer",
+                marginRight: "5px",
+              }}
+            >
+              -
+            </button>
+            <input
+              type="number"
+              value={blockHeight}
+              placeholder="Block Height"
+              readOnly
+              style={{
+                width: "100px",
+                padding: "5px",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                color: "white",
+                textAlign: "center",
+              }}
+            />
+            <button
+              onClick={() => setBlockHeight((prev) => prev + 1)}
+              style={{
+                width: "30px",
+                height: "30px",
+                borderRadius: "50%",
+                border: "none",
+                backgroundColor: "#ed2c2c",
+                color: "white",
+                cursor: "pointer",
+                marginLeft: "5px",
+              }}
+            >
+              +
+            </button>
+          </Box>
           <Select
             sx={{
               bgcolor: "rgba(255, 255, 255, 0.15)", // Semi-transparent white background
