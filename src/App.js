@@ -137,6 +137,19 @@ const App = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             VStorage Explorer
           </Typography>
+          <input
+            type="number"
+            placeholder="Block Height"
+            style={{
+              width: "100px",
+              marginRight: "10px",
+              padding: "5px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
+              color: "white",
+            }}
+          />
           <Select
             sx={{
               bgcolor: "rgba(255, 255, 255, 0.15)", // Semi-transparent white background
