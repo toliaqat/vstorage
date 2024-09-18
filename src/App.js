@@ -77,8 +77,10 @@ const App = () => {
 
     // Fetch data
     fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {
-      const json = typeof data === "string" ? JSON.parse(data) : data;
-      setDataView(JSON.stringify(cleanJSON(json)));
+      
+      setDataView(JSON.stringify(cleanJSON(data)));
+      console.log(data);
+      const json = typeof data.value === "string" ? JSON.parse(data.value) : '';
       console.log(json);
       if (json.blockHeight) {
         setBlockHeight(json.blockHeight);
