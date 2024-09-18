@@ -5,11 +5,10 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Box, 
+  Box,
   IconButton,
   Select,
   MenuItem,
-  IconButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
