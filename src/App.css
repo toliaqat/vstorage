@@ -17,3 +17,9 @@
 input::placeholder {
   color: white; /* White color for placeholder */
 }
+
+input:focus {
+  outline: none;
+  border-color: #ccc; /* Neutral color for border */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* White shadow for focus */
+}
