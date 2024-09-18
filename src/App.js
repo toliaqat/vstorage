@@ -76,8 +76,10 @@ const App = () => {
     });
 
     // Fetch data
-    fetchData(apiEndpoint, columnPaths.at(-1)).then((dataString) => {
-      const data = JSON.parse(dataString);
+    fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {
+      if (typeof data === "string") {
+        data = JSON.parse(data);
+      }
       setDataView(JSON.stringify(cleanJSON(data)));
       console.log(data);
       if (data.blockHeight) {
