@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { fetchChildren, fetchData } from "./api";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import apiEndpoints from "./config";
 import { cleanJSON } from "./utils";
 import SplitPane from 'react-split-pane';
@@ -139,21 +141,15 @@ const App = () => {
             VStorage Explorer
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
-            <button
+            <IconButton
               onClick={() => setBlockHeight((prev) => Math.max(0, prev - 1))}
-              style={{
-                width: "30px",
-                height: "30px",
-                borderRadius: "50%",
-                border: "none",
-                backgroundColor: "#ed2c2c",
-                color: "white",
-                cursor: "pointer",
-                marginRight: "5px",
-              }}
+              size="small"
+              color="inherit"
+              aria-label="decrease block height"
+              sx={{ mr: 1 }}
             >
-              -
-            </button>
+              <RemoveIcon />
+            </IconButton>
             <input
               type="number"
               value={blockHeight}
@@ -169,21 +165,15 @@ const App = () => {
                 textAlign: "center",
               }}
             />
-            <button
+            <IconButton
               onClick={() => setBlockHeight((prev) => prev + 1)}
-              style={{
-                width: "30px",
-                height: "30px",
-                borderRadius: "50%",
-                border: "none",
-                backgroundColor: "#ed2c2c",
-                color: "white",
-                cursor: "pointer",
-                marginLeft: "5px",
-              }}
+              size="small"
+              color="inherit"
+              aria-label="increase block height"
+              sx={{ ml: 1 }}
             >
-              +
-            </button>
+              <AddIcon />
+            </IconButton>
           </Box>
           <Select
             sx={{
