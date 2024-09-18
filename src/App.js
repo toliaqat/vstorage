@@ -160,7 +160,7 @@ const App = () => {
               placeholder="Height (Optional)"
               readOnly
               style={{
-                width: "100px",
+                width: "150px",
                 padding: "5px",
                 borderRadius: "4px",
                 border: "1px solid #ccc",
