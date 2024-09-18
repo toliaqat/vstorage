@@ -161,9 +161,6 @@ const App = () => {
               border: "1px solid #ccc",
               backgroundColor: "rgba(255, 255, 255, 0.15)",
               color: "white",
-              "::placeholder": {
-                color: "rgba(255, 255, 255, 0.7)", // White shade for placeholder
-              },
               borderColor: "#ccc", // Neutral color for border
             }}
           />
