@@ -77,13 +77,14 @@ const App = () => {
 
     // Fetch data
     fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {
-      if (typeof data === "string") {
-        data = JSON.parse(data);
+      let json = data.value;
+      if (typeof json === "string") {
+        json = JSON.parse(json);
       }
-      setDataView(JSON.stringify(cleanJSON(data)));
-      console.log(data);
-      if (data.blockHeight) {
-        setBlockHeight(data.blockHeight);
+      setDataView(JSON.stringify(cleanJSON(json)));
+      console.log(json);
+      if (json.blockHeight) {
+        setBlockHeight(json.blockHeight);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
