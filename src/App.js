@@ -157,7 +157,7 @@ const App = () => {
             <input
               type="number"
               value={blockHeight}
-              placeholder="Block Height"
+              placeholder="Block Height (Optional)"
               readOnly
               style={{
                 width: "100px",
