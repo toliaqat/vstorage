@@ -5,12 +5,15 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Box,
+  Box, 
+  IconButton,
   Select,
   MenuItem,
   IconButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { fetchChildren, fetchData } from "./api";
 import apiEndpoints from "./config";
 import { cleanJSON } from "./utils";
@@ -138,6 +141,14 @@ const App = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             VStorage Explorer
           </Typography>
+          <IconButton
+            size="small"
+            color="inherit"
+            aria-label="decrease block height"
+            sx={{ mr: 1 }}
+          >
+            <ArrowLeftIcon />
+          </IconButton>
           <input
             type="number"
             value={blockHeight}
@@ -153,6 +164,14 @@ const App = () => {
               color: "white",
             }}
           />
+          <IconButton
+            size="small"
+            color="inherit"
+            aria-label="increase block height"
+            sx={{ ml: 1, mr: 2 }}
+          >
+            <ArrowRightIcon />
+          </IconButton>
           <Select
             sx={{
               bgcolor: "rgba(255, 255, 255, 0.15)", // Semi-transparent white background
