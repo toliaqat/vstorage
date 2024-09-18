@@ -46,10 +46,8 @@ const App = () => {
   const [path, setPath] = useState(searchParams.get("path"));
   const [columns, setColumns] = useState(getInitialColumns(path));
   const [dataView, setDataView] = useState("");
-  const [apiEndpoint, setApiEndpoint] = useState(
-    apiEndpoints.find((x) => x.value === searchParams.get("endpoint"))?.value ||
-      apiEndpoints[0].value
-  );
+  const initialEndpoint = searchParams.get("endpoint") || apiEndpoints[0].value;
+  const [apiEndpoint, setApiEndpoint] = useState(initialEndpoint);
 
   useEffect(() => {
     const columnPaths = columns.map((_, idx) =>
@@ -116,7 +114,9 @@ const App = () => {
 
   const handleEndpointChange = (event) => {
     setColumns(getInitialColumns(null));
-    setApiEndpoint(event.target.value);
+    const newEndpoint = event.target.value;
+    setApiEndpoint(newEndpoint);
+    updateQueryParam("endpoint", newEndpoint);
   };
 
   const dataToShow = columns.at(-1).items.length === 0 && dataView;
