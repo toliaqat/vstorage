@@ -80,7 +80,7 @@ const App = () => {
       
       setDataView(JSON.stringify(cleanJSON(data)));
       console.log(data);
-      const json = typeof data.value === "string" && data.value !== "" ? JSON.parse(data.value) : {};
+      const json = typeof data.value === "string" ? JSON.parse(data.value) : '';
       console.log(json);
       if (json.blockHeight) {
         setBlockHeight(json.blockHeight);
