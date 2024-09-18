@@ -158,7 +158,7 @@ const App = () => {
               type="number"
               value={blockHeight}
               placeholder="Height (Optional)"
-              readOnly
+              onChange={(e) => setBlockHeight(e.target.value)}
               style={{
                 width: "150px",
                 padding: "5px",
