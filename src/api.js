@@ -2,7 +2,6 @@ export const fetchChildren = async (apiEndpoint, path) => {
   const url = `${apiEndpoint}`;
   const defaultPath = "/custom/vstorage/children/published";
   const defaultDataPath = "/custom/vstorage/data";
-  const defaultDataPath = "/custom/vstorage/data";
   const requestBody = {
     jsonrpc: "2.0",
     id: 1,
