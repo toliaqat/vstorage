@@ -117,7 +117,7 @@ const App = () => {
       .join(".");
     updateQueryParam("path", newPath);
     setPath(newPath);
-    setColumns(() => {
+    setColumns((prevColumns) => {
       const newColumns = prevColumns.slice(0, columnIndex + 1);
       newColumns[columnIndex] = {
         ...newColumns[columnIndex],
