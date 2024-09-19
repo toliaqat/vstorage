@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, List, ListItem, ListItemText } from "@mui/material";
+import { Box, List, ListItem, ListItemText, InputAdornment } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 const MillerColumns = ({ columns, onItemSelected }) => {
   const [filterTexts, setFilterTexts] = useState(Array(columns.length).fill(""));
@@ -57,6 +58,11 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                     border: "1px solid #ccc",
                   }}
                   onChange={(e) => handleFilterChange(e, columnIndex)}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <SearchIcon />
+                    </InputAdornment>
+                  }
                 />
               </ListItem>
             )}
