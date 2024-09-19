@@ -1,7 +1,22 @@
 export const fetchChildren = async (apiEndpoint, path) => {
-  const url = `${apiEndpoint}/agoric/vstorage/children/${path}`;
+  const url = `${apiEndpoint}`;
+  const requestBody = {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "abci_query",
+    params: {
+      path: path,
+      height: "0", // Assuming blockHeightInput.text is not available here
+    },
+  };
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    });
     if (!response.ok) throw new Error("Network response was not ok");
     const { children } = await response.json();
     return children;
