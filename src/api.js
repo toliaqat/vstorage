@@ -20,8 +20,10 @@ export const fetchChildren = async (apiEndpoint, path) => {
       body: JSON.stringify(requestBody),
     });
     if (!response.ok) throw new Error("Network response was not ok");
-    const { children } = await response.json();
-    return children;
+    const jsonResponse = await response.json();
+    const base64Value = jsonResponse.result.response.value;
+    const decodedValue = JSON.parse(atob(base64Value));
+    return decodedValue.children || [];
   } catch (error) {
     console.error("Fetching error:", error);
     return [];
@@ -49,7 +51,9 @@ export const fetchData = async (apiEndpoint, path) => {
       body: JSON.stringify(requestBody),
     });
     if (!response.ok) throw new Error("Network response was not ok");
-    return await response.json();
+    const jsonResponse = await response.json();
+    const base64Value = jsonResponse.result.response.value;
+    return JSON.parse(atob(base64Value));
   } catch (error) {
     console.error("Fetching data error:", error);
     return "Failed to fetch data";
