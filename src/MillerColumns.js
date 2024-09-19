@@ -52,7 +52,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                   placeholder="Search..."
                   style={{
                     width: "100%",
-                    padding: "8px",
+                    padding: "4px",
                     marginBottom: "8px",
                     borderRadius: "8px",
                     border: "1px solid #ccc",
