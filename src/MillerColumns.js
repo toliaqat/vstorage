@@ -49,6 +49,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
               <ListItem key={`input-${columnIndex}`} style={{ padding: "0px 16px" }}>
                 <TextField
                   variant="outlined"
+                  size="small"
                   placeholder="Search..."
                   fullWidth
                   margin="dense"
@@ -59,6 +60,15 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                         <SearchIcon />
                       </InputAdornment>
                     ),
+                  }}
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      borderRadius: '16px', // Rounded corners
+                      '& .MuiOutlinedInput-input': {
+                        fontSize: '0.75rem', // Increased font size
+                        padding: '8px 14px', // Increased height
+                      },
+                    },
                   }}
                 />
               </ListItem>
