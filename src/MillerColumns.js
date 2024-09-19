@@ -30,7 +30,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
   return (
     <Box display="flex" height="100%" width="100%" overflow="hidden" bgcolor="#f7f7f7">
       {fullColumns.map((column, columnIndex) => (
-        {column.items && column.items.length > 0 && (
+        column.items && column.items.length > 0 && (
           <List
             key={columnIndex}
             style={{
@@ -79,7 +79,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                 </ListItem>
               ))}
           </List>
-        )}
+        )
       ))}
     </Box>
   );
