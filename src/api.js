@@ -1,11 +1,13 @@
 export const fetchChildren = async (apiEndpoint, path) => {
   const url = `${apiEndpoint}`;
+  const defaultPath = "/custom/vstorage/children/published";
+  const defaultDataPath = "/custom/vstorage/data";
   const requestBody = {
     jsonrpc: "2.0",
     id: 1,
     method: "abci_query",
     params: {
-      path: path,
+      path: path || defaultPath,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
@@ -33,7 +35,7 @@ export const fetchData = async (apiEndpoint, path) => {
     id: 1,
     method: "abci_query",
     params: {
-      path: path,
+      path: path || defaultDataPath,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
