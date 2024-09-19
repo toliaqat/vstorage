@@ -71,7 +71,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                   onClick={() => onItemSelected(item.name, columnIndex)}
                   selected={item.isSelected}
                   style={{
-                    backgroundColor: item.isSelected ? "#ed2c2c" : "transparent",
+                    backgroundColor: item.isSelected ? "#ffcccc" : "transparent",
                     padding: "0px 16px",
                   }}
                 >
