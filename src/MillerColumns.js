@@ -49,7 +49,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
               <ListItem key={`input-${columnIndex}`} style={{ padding: "0px 16px" }}>
                 <input
                   type="text"
-                  placeholder="Filter..."
+                  placeholder="Search..."
                   style={{
                     width: "100%",
                     padding: "8px",
