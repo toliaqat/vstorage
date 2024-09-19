@@ -7,7 +7,7 @@ export const fetchChildren = async (apiEndpoint, path) => {
     id: 1,
     method: "abci_query",
     params: {
-      path: path || defaultPath,
+      path: `${defaultPath}${path ? `.${path}` : ''}`,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
@@ -38,7 +38,7 @@ export const fetchData = async (apiEndpoint, path) => {
     id: 1,
     method: "abci_query",
     params: {
-      path: path || defaultDataPath,
+      path: `${defaultDataPath}${path ? `.${path}` : ''}`,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
