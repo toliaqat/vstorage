@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Box, List, ListItem, ListItemText, InputAdornment } from "@mui/material";
+import { Box, List, ListItem, ListItemText, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 const MillerColumns = ({ columns, onItemSelected }) => {
@@ -47,22 +47,19 @@ const MillerColumns = ({ columns, onItemSelected }) => {
           >
             {column.items.length > 10 && (
               <ListItem key={`input-${columnIndex}`} style={{ padding: "0px 16px" }}>
-                <input
-                  type="text"
+                <TextField
+                  variant="outlined"
                   placeholder="Search..."
-                  style={{
-                    width: "100%",
-                    padding: "4px",
-                    marginBottom: "8px",
-                    borderRadius: "8px",
-                    border: "1px solid #ccc",
-                  }}
+                  fullWidth
+                  margin="dense"
                   onChange={(e) => handleFilterChange(e, columnIndex)}
-                  startAdornment={
-                    <InputAdornment position="end">
-                      <SearchIcon />
-                    </InputAdornment>
-                  }
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
               </ListItem>
             )}
