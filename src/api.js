@@ -12,7 +12,7 @@ export const fetchChildren = async (apiEndpoint, path) => {
 };
 
 export const fetchData = async (apiEndpoint, path) => {
-  const url = `${apiEndpoint}/rpc`;
+  const url = `${apiEndpoint}`;
   const requestBody = {
     jsonrpc: "2.0",
     id: 1,
