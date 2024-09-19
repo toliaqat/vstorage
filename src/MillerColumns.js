@@ -72,7 +72,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                 selected={item.isSelected}
                 style={{
 
-                  backgroundColor: item.isSelected ? "#FFC0CB" : "transparent",
+                  backgroundColor: item.isSelected ? "#FFB6C1" : "transparent",
                   padding: "0px 16px",
                 }}
               >
