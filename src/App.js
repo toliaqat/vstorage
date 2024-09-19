@@ -102,7 +102,22 @@ const App = () => {
     if (columns[columnIndex + 1]?.selected === itemName) return;
 
     setDataView("");
-    setColumns((prevColumns) => {
+    const newColumns = columns.slice(0, columnIndex + 1);
+    newColumns[columnIndex] = {
+      ...newColumns[columnIndex],
+      items: newColumns[columnIndex].items.map((item) => ({
+        ...item,
+        isSelected: item.name === itemName,
+      })),
+    };
+    const newPath = newColumns
+      .slice(1)
+      .map((col) => col.selected)
+      .concat(itemName)
+      .join(".");
+    updateQueryParam("path", newPath);
+    setPath(newPath);
+    setColumns(() => {
       const newColumns = prevColumns.slice(0, columnIndex + 1);
       newColumns[columnIndex] = {
         ...newColumns[columnIndex],
