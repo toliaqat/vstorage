@@ -38,7 +38,7 @@ export const fetchData = async (apiEndpoint, path) => {
     id: 1,
     method: "abci_query",
     params: {
-      path: `${defaultDataPath}${path ? `.${path}` : ''}`,
+      path: `${defaultDataPath}${path ? `/${path}` : ''}`,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
