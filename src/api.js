@@ -1,4 +1,4 @@
-const defaultPath = "/custom/vstorage/children/published";
+const defaultPath = "/custom/vstorage/children/";
 
 export const fetchChildren = async (apiEndpoint, path) => {
   const url = `${apiEndpoint}`;
@@ -8,7 +8,7 @@ export const fetchChildren = async (apiEndpoint, path) => {
     id: 1,
     method: "abci_query",
     params: {
-      path: `${defaultPath}${path ? `.${path}` : ''}`,
+      path: `${defaultPath}${path ? `${path}` : ''}`,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
@@ -38,7 +38,7 @@ export const fetchData = async (apiEndpoint, path) => {
     id: 1,
     method: "abci_query",
     params: {
-      path: `${defaultPath.replace('/children/', '/data/')}${path ? `/${path}` : ''}`,
+      path: `${defaultPath.replace('/children/', '/data/')}${path ? `${path}` : ''}`,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
