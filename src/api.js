@@ -52,6 +52,9 @@ export const fetchData = async (apiEndpoint, path) => {
     });
     if (!response.ok) throw new Error("Network response was not ok");
     const jsonResponse = await response.json();
+    if (jsonResponse.result.response.code !== 0) {
+      return null;
+    }
     const base64Value = jsonResponse.result.response.value;
     return JSON.parse(atob(base64Value));
   } catch (error) {
