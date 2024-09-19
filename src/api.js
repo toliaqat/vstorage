@@ -57,7 +57,10 @@ export const fetchData = async (apiEndpoint, path) => {
       return null;
     }
     const base64Value = jsonResponse.result.response.value;
-    const parsedData = JSON.parse(atob(base64Value));
+    let parsedData = JSON.parse(atob(base64Value));
+    if (typeof parsedData === 'string') {
+      parsedData = JSON.parse(parsedData);
+    }
     console.log("Parsed data:", parsedData);
     return parsedData;
   } catch (error) {
