@@ -52,13 +52,16 @@ export const fetchData = async (apiEndpoint, path) => {
     });
     if (!response.ok) throw new Error("Network response was not ok");
     const jsonResponse = await response.json();
+    console.log("fetchData response:", jsonResponse);
     if (jsonResponse.result.response.code !== 0) {
       return null;
     }
     const base64Value = jsonResponse.result.response.value;
-    return JSON.parse(atob(base64Value));
+    const parsedData = JSON.parse(atob(base64Value));
+    console.log("Parsed data:", parsedData);
+    return parsedData;
   } catch (error) {
-    console.error("Fetching data error:", error);
+    console.error("Fetching data error:", error, "Request body:", requestBody);
     return "Failed to fetch data";
   }
 };

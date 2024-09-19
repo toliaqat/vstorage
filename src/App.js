@@ -78,7 +78,8 @@ const App = () => {
     });
 
     // Fetch data
-    fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {      
+    fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {
+      console.log("Data received from fetchData:", data);
       setDataView(JSON.stringify(cleanJSON(data)));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
