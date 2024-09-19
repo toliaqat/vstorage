@@ -58,7 +58,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
                     border: "1px solid #ccc",
                   }}
                   onChange={(e) => handleFilterChange(e, columnIndex)}
-                  endAdornment={
+                  startAdornment={
                     <InputAdornment position="end">
                       <SearchIcon />
                     </InputAdornment>
