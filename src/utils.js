@@ -3,14 +3,12 @@
  * @param {string} str
  */
 const parseString = (str) => {
-  if (str.startsWith("{") || str.startsWith("[")) {
-    try {
-      return JSON.parse(str);
-    } catch (error) {
-      console.log(`Error while parsing value "${str}": `, error);
-    }
+  try {
+    return JSON.parse(str.startsWith("#") ? str.slice(1) : str);
+  } catch (error) {
+    console.log(`Error while parsing value "${str}": `, error);
+    return str;
   }
-  return str;
 };
 
 export const cleanJSON = (input) =>
