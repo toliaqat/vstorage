@@ -31,14 +31,13 @@ export const fetchChildren = async (apiEndpoint, path) => {
 };
 
 export const fetchData = async (apiEndpoint, path) => {
-  const defaultDataPath = "/custom/vstorage/data"; 
   const url = `${apiEndpoint}`;
   const requestBody = {
     jsonrpc: "2.0",
     id: 1,
     method: "abci_query",
     params: {
-      path: `${defaultDataPath}${path ? `/${path}` : ''}`,
+      path: `${defaultPath.replace('/children/', '/data/')}${path ? `/${path}` : ''}`,
       height: "0", // Assuming blockHeightInput.text is not available here
     },
   };
