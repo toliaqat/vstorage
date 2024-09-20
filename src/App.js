@@ -257,7 +257,7 @@ const App = () => {
           justifyContent: 'space-between',
           alignItems: 'center',
           padding: '2px',
-          backgroundColor: '#f0f0f0',
+          backgroundColor: '#ffffff',
           borderTop: '1px solid #ccc',
           position: 'fixed',
           bottom: 0,
