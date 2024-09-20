@@ -87,6 +87,7 @@ const App = () => {
     });
 
     // Fetch data
+    console.log(blockHeight);
     fetchData(apiEndpoint, columnPaths.at(-1), blockHeight).then((response) => {
       if (response) {
         console.log("Data received from fetchData:", response.data);
@@ -183,11 +184,9 @@ const App = () => {
             </IconButton>
             <input
               type="number"
-              value={blockHeight}
               inputMode="numeric"
               step="any"
               placeholder="Height (Optional)"
-              onChange={(e) => setBlockHeight(e.target.value)}
               style={{
                 width: "150px",
                 padding: "5px",
