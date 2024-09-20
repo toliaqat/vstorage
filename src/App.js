@@ -174,7 +174,13 @@ const App = () => {
               Block Height: {currentBlockHeight}
             </Typography>
             <IconButton
-              onClick={() => setBlockHeight((prev) => Math.max(0, prev - 1))}
+              onClick={() => {
+                setBlockHeight((prev) => {
+                  const newValue = Math.max(0, prev - 1);
+                  document.querySelector('input[type="number"]').value = newValue;
+                  return newValue;
+                });
+              }}
               size="small"
               color="inherit"
               aria-label="decrease block height"
@@ -203,7 +209,13 @@ const App = () => {
               }}
             />
             <IconButton
-              onClick={() => setBlockHeight((prev) => prev + 1)}
+              onClick={() => {
+                setBlockHeight((prev) => {
+                  const newValue = prev + 1;
+                  document.querySelector('input[type="number"]').value = newValue;
+                  return newValue;
+                });
+              }}
               size="small"
               color="inherit"
               aria-label="increase block height"
