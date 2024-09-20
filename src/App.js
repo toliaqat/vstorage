@@ -57,13 +57,14 @@ const App = () => {
   const [apiEndpoint, setApiEndpoint] = useState(initialEndpoint);
 
   useEffect(() => {
+    setLoading(true);
     const columnPaths = columns.map((_, idx) =>
       columns
         .slice(0, idx + 1)
         .map((col) => col.selected).filter((x) => x !== undefined)
         .join(".")
     );
-    setLoading(true);
+    
     // Fetch columns
     const columnPromises = columnPaths.map((path, idx) =>
       columns[idx].items.length === 0
@@ -245,7 +246,6 @@ const App = () => {
         maxSize={400}
         style={{ position: 'relative', width: '100%', height: '100%' }}
       >
-        <MillerColumns columns={columns} onItemSelected={handleItemSelected} />
         {loading && (
           <Box sx={{ 
             position: 'fixed', 
@@ -256,12 +256,13 @@ const App = () => {
             display: 'flex', 
             justifyContent: 'center', 
             alignItems: 'center', 
-            backgroundColor: 'rgba(255, 255, 255, 0.7)', 
-            zIndex: 1300 
+            backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+            zIndex: 1500 
           }}>
             <CircularProgress />
           </Box>
         )}
+        <MillerColumns columns={columns} onItemSelected={handleItemSelected} isLoading={loading}/>
         <Box sx={{ position: 'relative' }}>
           <Tooltip title="Copy Data">
             <IconButton
