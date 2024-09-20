@@ -61,7 +61,7 @@ const App = () => {
     );
     // Fetch columns
     const columnPromises = columnPaths.map((path, idx) =>
-      columns[idx].items.length === 0 ? fetchChildren(apiEndpoint, path) : null
+      columns[idx].items.length === 0 ? fetchChildren(apiEndpoint, path, blockHeight) : null
     );
     Promise.all(columnPromises).then((responses) => {
       setColumns((prevColumns) =>
@@ -78,7 +78,7 @@ const App = () => {
     });
 
     // Fetch data
-    fetchData(apiEndpoint, columnPaths.at(-1)).then((data) => {
+    fetchData(apiEndpoint, columnPaths.at(-1), blockHeight).then((data) => {
       console.log("Data received from fetchData:", data);
       setDataView(JSON.stringify(cleanJSON(data)));
     });

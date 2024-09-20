@@ -1,6 +1,6 @@
 const defaultPath = "/custom/vstorage/children/";
 
-export const fetchChildren = async (apiEndpoint, path) => {
+export const fetchChildren = async (apiEndpoint, path, blockHeight) => {
   const url = `${apiEndpoint}`;
 
   const requestBody = {
@@ -9,7 +9,7 @@ export const fetchChildren = async (apiEndpoint, path) => {
     method: "abci_query",
     params: {
       path: `${defaultPath}${path ? `${path}` : ''}`,
-      height: "0", // Assuming blockHeightInput.text is not available here
+      height: blockHeight && blockHeight !== "0" ? blockHeight : "0",
     },
   };
   try {
@@ -31,7 +31,7 @@ export const fetchChildren = async (apiEndpoint, path) => {
   }
 };
 
-export const fetchData = async (apiEndpoint, path) => {
+export const fetchData = async (apiEndpoint, path, blockHeight) => {
   const url = `${apiEndpoint}`;
   const requestBody = {
     jsonrpc: "2.0",
@@ -39,7 +39,7 @@ export const fetchData = async (apiEndpoint, path) => {
     method: "abci_query",
     params: {
       path: `${defaultPath.replace('/children/', '/data/')}${path ? `${path}` : ''}`,
-      height: "0", // Assuming blockHeightInput.text is not available here
+      height: blockHeight && blockHeight !== "0" ? blockHeight : "0",
     },
   };
   try {
