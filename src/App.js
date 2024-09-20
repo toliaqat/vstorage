@@ -172,6 +172,7 @@ const App = () => {
             <Typography variant="body1" sx={{ mr: 2 }}>
               Block Height: {currentBlockHeight}
             </Typography>
+            <IconButton
               onClick={() => setBlockHeight((prev) => Math.max(0, prev - 1))}
               size="small"
               color="inherit"
