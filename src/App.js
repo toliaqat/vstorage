@@ -96,7 +96,7 @@ const App = () => {
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [apiEndpoint, path]);
+  }, [apiEndpoint, path, blockHeight]);
 
   useEffect(() => {
     const pathString = columns
@@ -171,7 +171,7 @@ const App = () => {
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
             <Typography variant="body1" sx={{ mr: 2 }}>
-              Fetched Height: {currentBlockHeight}
+              Height: {currentBlockHeight}
             </Typography>
             <IconButton
               onClick={() => {
