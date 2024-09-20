@@ -175,7 +175,6 @@ const App = () => {
                 });
               }}
               disabled={!blockHeight}
-              disabled={!blockHeight}
               size="small"
               color="inherit"
               aria-label="decrease block height"
@@ -210,6 +209,7 @@ const App = () => {
                 });
               }}
               size="small"
+              disabled={!blockHeight}
               color="inherit"
               aria-label="increase block height"
               sx={{ ml: 0.1 }}
@@ -240,7 +240,7 @@ const App = () => {
         split="horizontal" // or "vertical" based on your layout
         defaultSize="50%"
         minSize={100}
-        maxSize={500}
+        maxSize={400}
         style={{ position: 'relative', width: '100%', height: '100%' }}
       >
         <MillerColumns columns={columns} onItemSelected={handleItemSelected} />
