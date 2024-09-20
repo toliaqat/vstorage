@@ -174,6 +174,8 @@ const App = () => {
                   return newValue;
                 });
               }}
+              disabled={!blockHeight}
+              disabled={!blockHeight}
               size="small"
               color="inherit"
               aria-label="decrease block height"
