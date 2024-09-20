@@ -189,7 +189,7 @@ const App = () => {
               placeholder="Height (Optional)"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  setBlockHeight((prev) => prev + 1);
+                  setBlockHeight(e.target.value);
                 }
               }}
               style={{
