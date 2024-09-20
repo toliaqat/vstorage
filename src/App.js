@@ -279,11 +279,10 @@ const App = () => {
           />
         </IconButton>
         <Typography variant="body2" sx={{ ml: 'auto', mr: 2 }}>
-          Path: {`/custom/vstorage/children/${path ? `${path}` : ''}`}
+          {`/custom/vstorage/children/${path ? `${path}` : ''}`}
         </Typography>
         </Box>
       </Box>
-    </Box>
   );
 };
 
