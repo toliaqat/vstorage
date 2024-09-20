@@ -177,9 +177,9 @@ const App = () => {
                 width: "150px",
                 padding: "5px",
                 borderRadius: "4px",
-                border: "1px solid #ccc",
+                border: "1px solid #eee", // Lighter border color
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
-                color: "white",
+                color: "#f0f0f0", // Lighter text color
                 textAlign: "center",
               }}
             />
