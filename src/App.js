@@ -176,7 +176,24 @@ const App = () => {
                   document.querySelector('input[type="number"]').value = newValue;
                   return newValue;
                 });
+                borderRadius: "8px", // Rounded corners
               }}
+            />
+            <IconButton
+              onClick={() => {
+                setBlockHeight((prev) => {
+                  const newValue = prev + 1;
+                  document.querySelector('input[type="number"]').value = newValue;
+                  return newValue;
+                });
+              }}
+              size="small"
+              disabled={!blockHeight}
+              color="inherit"
+              aria-label="increase block height"
+              sx={{ ml: 0.1 }}
+            >
+              <AddIcon />
               disabled={!blockHeight}
               size="small"
               color="inherit"
@@ -224,6 +241,7 @@ const App = () => {
             sx={{
               bgcolor: "rgba(255, 255, 255, 0.15)", // Semi-transparent white background
               height: 32,
+              borderRadius: "8px", // Rounded corners
             }}
             value={apiEndpoint}
             onChange={handleEndpointChange}
