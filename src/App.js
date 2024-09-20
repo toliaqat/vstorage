@@ -160,7 +160,7 @@ const App = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
-      <AppBar position="static" sx={{ bgcolor: "#d73252", zIndex: 1100 }}>
+      <AppBar position="static" sx={{ bgcolor: "#BB2D40", zIndex: 1100 }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             VStorage Explorer
