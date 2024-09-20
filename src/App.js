@@ -49,6 +49,7 @@ const App = () => {
   const [columns, setColumns] = useState(getInitialColumns(path));
   const [dataView, setDataView] = useState("");
   const [blockHeight, setBlockHeight] = useState("");
+  const [currentBlockHeight, setCurrentBlockHeight] = useState("");
   const initialEndpoint = searchParams.get("endpoint") || apiEndpoints[0].value;
   const [apiEndpoint, setApiEndpoint] = useState(initialEndpoint);
 
@@ -61,7 +62,15 @@ const App = () => {
     );
     // Fetch columns
     const columnPromises = columnPaths.map((path, idx) =>
-      columns[idx].items.length === 0 ? fetchChildren(apiEndpoint, path, blockHeight) : null
+      columns[idx].items.length === 0
+        ? fetchChildren(apiEndpoint, path, blockHeight).then((response) => {
+            if (response) {
+              setCurrentBlockHeight(response.blockHeight);
+              return response.children;
+            }
+            return [];
+          })
+        : null
     );
     Promise.all(columnPromises).then((responses) => {
       setColumns((prevColumns) =>
@@ -78,9 +87,12 @@ const App = () => {
     });
 
     // Fetch data
-    fetchData(apiEndpoint, columnPaths.at(-1), blockHeight).then((data) => {
-      console.log("Data received from fetchData:", data);
-      setDataView(JSON.stringify(cleanJSON(data)));
+    fetchData(apiEndpoint, columnPaths.at(-1), blockHeight).then((response) => {
+      if (response) {
+        console.log("Data received from fetchData:", response.data);
+        setDataView(JSON.stringify(cleanJSON(response.data)));
+        setCurrentBlockHeight(response.blockHeight);
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiEndpoint, path]);
@@ -157,7 +169,9 @@ const App = () => {
             VStorage Explorer
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
-            <IconButton
+            <Typography variant="body1" sx={{ mr: 2 }}>
+              Block Height: {currentBlockHeight}
+            </Typography>
               onClick={() => setBlockHeight((prev) => Math.max(0, prev - 1))}
               size="small"
               color="inherit"

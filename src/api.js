@@ -24,7 +24,10 @@ export const fetchChildren = async (apiEndpoint, path, blockHeight) => {
     const jsonResponse = await response.json();
     const base64Value = jsonResponse.result.response.value;
     const decodedValue = JSON.parse(atob(base64Value));
-    return decodedValue.children || [];
+    return {
+      children: decodedValue.children || [],
+      blockHeight: jsonResponse.result.response.height,
+    };
   } catch (error) {
     console.error("Fetching error:", error);
     return [];
@@ -62,7 +65,10 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
       parsedData = JSON.parse(parsedData);
     }
     console.log("Parsed data:", parsedData);
-    return parsedData;
+    return {
+      data: parsedData,
+      blockHeight: jsonResponse.result.response.height,
+    };
   } catch (error) {
     console.error("Fetching data error:", error, "Request body:", requestBody);
     return "Failed to fetch data";
