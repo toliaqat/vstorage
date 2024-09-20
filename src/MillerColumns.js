@@ -40,7 +40,7 @@ const MillerColumns = ({ columns, onItemSelected }) => {
               overflowY: "auto",
               borderRadius: "8px",
               backgroundColor: "#ffffff",
-              maxHeight: "500px",
+              maxHeight: "350px",
               margin: "10px 5px",
               boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
             }}
