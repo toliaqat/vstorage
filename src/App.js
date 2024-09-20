@@ -99,8 +99,8 @@ const App = () => {
   }, [apiEndpoint]);
 
   const handleItemSelected = async (itemName, columnIndex) => {
-    // return if the item is already selected
-    if (columns[columnIndex + 1]?.selected === itemName) return;
+    // Return early if the item is already selected
+    if (columns[columnIndex]?.selected === itemName) return;
 
     setDataView("");
     const newColumns = columns.slice(0, columnIndex + 1);
