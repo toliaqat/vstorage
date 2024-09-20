@@ -251,6 +251,87 @@ const App = () => {
         <MillerColumns columns={columns} onItemSelected={handleItemSelected} />
         <ContentPane content={dataToShow} />
       </SplitPane>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '8px',
+          backgroundColor: '#f0f0f0',
+          borderTop: '1px solid #ccc',
+          position: 'fixed',
+          bottom: 0,
+          width: '100%',
+          zIndex: 1100,
+        }}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant="body1" sx={{ mr: 2 }}>
+            Fetched Height: {currentBlockHeight}
+          </Typography>
+          <IconButton
+            onClick={() => {
+              setBlockHeight((prev) => {
+                const newValue = Math.max(0, prev - 1);
+                document.querySelector('input[type="number"]').value = newValue;
+                return newValue;
+              });
+            }}
+            size="small"
+            color="inherit"
+            aria-label="decrease block height"
+            sx={{ mr: 0.1 }}
+          >
+            <RemoveIcon />
+          </IconButton>
+          <input
+            type="number"
+            inputMode="numeric"
+            step="any"
+            placeholder="Set Height (Optional)"
+            onChange={(e) => {
+              setBlockHeight(e.target.value);
+            }}
+            style={{
+              width: "150px",
+              padding: "5px",
+              borderRadius: "4px",
+              border: "1px solid #eee", // Lighter border color
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
+              color: "#000", // Darker text color for better visibility
+              textAlign: "center",
+            }}
+          />
+          <IconButton
+            onClick={() => {
+              setBlockHeight((prev) => {
+                const newValue = prev + 1;
+                document.querySelector('input[type="number"]').value = newValue;
+                return newValue;
+              });
+            }}
+            size="small"
+            color="inherit"
+            aria-label="increase block height"
+            sx={{ ml: 0.1 }}
+          >
+            <AddIcon />
+          </IconButton>
+        </Box>
+        <IconButton
+          component="a"
+          href="https://github.com/agoric-labs/vstorage-viewer"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ color: 'inherit' }}
+        >
+          <img
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            alt="GitHub Logo"
+            style={{ width: 24, height: 24 }}
+          />
+        </IconButton>
+      </Box>
     </Box>
   );
 };
