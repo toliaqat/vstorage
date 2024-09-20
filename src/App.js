@@ -187,6 +187,11 @@ const App = () => {
               inputMode="numeric"
               step="any"
               placeholder="Height (Optional)"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setBlockHeight((prev) => prev + 1);
+                }
+              }}
               style={{
                 width: "150px",
                 padding: "5px",
