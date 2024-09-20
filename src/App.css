@@ -16,7 +16,7 @@
 }
 
 input::placeholder {                                                                                                                         
-  color: #cccccc; /* Light gray color for better visibility */                                                                                            
+  color: #e0e0e0; /* Lighter gray color for better visibility */                                                                                            
 }    
 
 /* Remove default spinner controls in number input */
