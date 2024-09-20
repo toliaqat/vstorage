@@ -245,6 +245,7 @@ const App = () => {
         maxSize={400}
         style={{ position: 'relative', width: '100%', height: '100%' }}
       >
+        <MillerColumns columns={columns} onItemSelected={handleItemSelected} />
         {loading && (
           <Box sx={{ 
             position: 'fixed', 
@@ -256,12 +257,11 @@ const App = () => {
             justifyContent: 'center', 
             alignItems: 'center', 
             backgroundColor: 'rgba(255, 255, 255, 0.7)', 
-            zIndex: 1200 
+            zIndex: 1300 
           }}>
             <CircularProgress />
           </Box>
         )}
-        {!loading && <MillerColumns columns={columns} onItemSelected={handleItemSelected} />}
         <Box sx={{ position: 'relative' }}>
           <Tooltip title="Copy Data">
             <IconButton
