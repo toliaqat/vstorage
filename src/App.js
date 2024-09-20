@@ -87,7 +87,7 @@ const App = () => {
     });
 
     // Fetch data
-    console.log(blockHeight);
+    console.log("blockHeight: " + blockHeight);
     fetchData(apiEndpoint, columnPaths.at(-1), blockHeight).then((response) => {
       if (response) {
         console.log("Data received from fetchData:", response.data);
