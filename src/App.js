@@ -172,7 +172,7 @@ const App = () => {
               inputMode="numeric"
               step="any"
               placeholder="Height (Optional)"
-              onChange={(e) => setBlockHeight(Number(e.target.value))}
+              onChange={(e) => setBlockHeight(e.target.value)}
               style={{
                 width: "150px",
                 padding: "5px",
