@@ -46,32 +46,34 @@ const MillerColumns = ({ columns, onItemSelected }) => {
             }}
           >
             {column.items.length > 10 && (
-              <ListItem key={`input-${columnIndex}`} style={{ padding: "0px 16px" }}>
-                <TextField
-                  variant="outlined"
-                  size="small"
-                  placeholder="Search..."
-                  fullWidth
-                  margin="dense"
-                  onChange={(e) => handleFilterChange(e, columnIndex)}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      borderRadius: '16px', // Rounded corners
-                      '& .MuiOutlinedInput-input': {
-                        fontSize: '0.75rem', // Increased font size
-                        padding: '8px 14px', // Increased height
+              <Box key={`input-container-${columnIndex}`} sx={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#ffffff' }}>
+                <ListItem key={`input-${columnIndex}`} style={{ padding: "0px 16px" }}>
+                  <TextField
+                    variant="outlined"
+                    size="small"
+                    placeholder="Search..."
+                    fullWidth
+                    margin="dense"
+                    onChange={(e) => handleFilterChange(e, columnIndex)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '16px', // Rounded corners
+                        '& .MuiOutlinedInput-input': {
+                          fontSize: '0.75rem', // Increased font size
+                          padding: '8px 14px', // Increased height
+                        },
                       },
-                    },
-                  }}
-                />
-              </ListItem>
+                    }}
+                  />
+                </ListItem>
+              </Box>
             )}
             {column.items
               .filter((item) =>
