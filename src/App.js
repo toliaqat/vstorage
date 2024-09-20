@@ -184,7 +184,7 @@ const App = () => {
               size="small"
               color="inherit"
               aria-label="decrease block height"
-              sx={{ mr: 0.5 }}
+              sx={{ mr: 0.1 }}
             >
               <RemoveIcon />
             </IconButton>
@@ -217,7 +217,7 @@ const App = () => {
               size="small"
               color="inherit"
               aria-label="increase block height"
-              sx={{ ml: 0.5 }}
+              sx={{ ml: 0.1 }}
             >
               <AddIcon />
             </IconButton>
