@@ -265,19 +265,24 @@ const App = () => {
           zIndex: 1100,
         }}
       >
-        <IconButton
-          component="a"
-          href="https://github.com/agoric-labs/vstorage-viewer"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ color: 'inherit' }}
-        >
-          <img
-            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            alt="GitHub Logo"
-            style={{ width: 48, height: 48 }}
-          />
-        </IconButton>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography variant="body2" sx={{ mr: 2 }}>
+            Path: {`/custom/vstorage/children/${path ? `${path}` : ''}`}
+          </Typography>
+          <IconButton
+            component="a"
+            href="https://github.com/agoric-labs/vstorage-viewer"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ color: 'inherit' }}
+          >
+            <img
+              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+              alt="GitHub Logo"
+              style={{ width: 48, height: 48 }}
+            />
+          </IconButton>
+        </Box>
       </Box>
     </Box>
   );
