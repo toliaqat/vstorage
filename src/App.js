@@ -9,7 +9,9 @@ import {
   IconButton,
   Select,
   MenuItem,
+  Tooltip,
 } from "@mui/material";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import MenuIcon from "@mui/icons-material/Menu";
 import { fetchChildren, fetchData } from "./api";
 import AddIcon from '@mui/icons-material/Add';
@@ -249,7 +251,17 @@ const App = () => {
         style={{ position: 'relative', width: '100%', height: '100%' }}
       >
         <MillerColumns columns={columns} onItemSelected={handleItemSelected} />
-        <ContentPane content={dataToShow} />
+        <Box sx={{ position: 'relative' }}>
+          <Tooltip title="Copy Data">
+            <IconButton
+              onClick={() => navigator.clipboard.writeText(dataView)}
+              sx={{ position: 'absolute', top: 8, right: 8, zIndex: 1 }}
+            >
+              <ContentCopyIcon />
+            </IconButton>
+          </Tooltip>
+          <ContentPane content={dataToShow} />
+        </Box>
       </SplitPane>
       <Box
         sx={{
