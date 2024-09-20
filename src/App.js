@@ -171,7 +171,7 @@ const App = () => {
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
             <Typography variant="body1" sx={{ mr: 2 }}>
-              Block Height: {currentBlockHeight}
+              Fetched Height: {currentBlockHeight}
             </Typography>
             <IconButton
               onClick={() => {
@@ -192,11 +192,9 @@ const App = () => {
               type="number"
               inputMode="numeric"
               step="any"
-              placeholder="Height (Optional)"
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  setBlockHeight(e.target.value);
-                }
+              placeholder="Set Height (Optional)"
+              onChange={(e) => {
+                setBlockHeight(e.target.value);
               }}
               style={{
                 width: "150px",

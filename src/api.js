@@ -9,7 +9,7 @@ export const fetchChildren = async (apiEndpoint, path, blockHeight) => {
     method: "abci_query",
     params: {
       path: `${defaultPath}${path ? `${path}` : ''}`,
-      height: blockHeight && blockHeight !== "0" ? blockHeight : "0",
+      height: blockHeight && blockHeight !== "0" ? blockHeight.toString() : "0",
     },
   };
   try {
@@ -42,7 +42,7 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     method: "abci_query",
     params: {
       path: `${defaultPath.replace('/children/', '/data/')}${path ? `${path}` : ''}`,
-      height: blockHeight && blockHeight !== "0" ? blockHeight : "0",
+      height: blockHeight && blockHeight !== "0" ? blockHeight.toString() : "0",
     },
   };
   try {
