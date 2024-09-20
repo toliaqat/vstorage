@@ -30,6 +30,20 @@ const MillerColumns = ({ columns, onItemSelected }) => {
 
   return (
     <Box display="flex" height="100%" width="100%" overflow="hidden" bgcolor="#f7f7f7">
+      <Box sx={{ position: 'relative', width: '100%' }}>
+        <img
+          src="https://www.icegif.com/wp-content/uploads/chicken-icegif-24.gif"
+          alt="animation"
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            width: '50px',
+            height: '50px',
+            zIndex: 1,
+          }}
+        />
+      </Box>
       {fullColumns.map((column, columnIndex) => (
         column.items && column.items.length > 0 && (
           <List
