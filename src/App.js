@@ -235,14 +235,7 @@ const App = () => {
           </Select>
         </Toolbar>
       </AppBar>
-      <SplitPane
-        split="horizontal" // or "vertical" based on your layout
-        defaultSize="50%"
-        minSize={100}
-        maxSize={400}
-        style={{ position: 'relative', width: '100%', height: '100%' }}
-      >
-        {loading && (
+      {loading && (
           <Box sx={{ 
             position: 'fixed', 
             top: 0, 
@@ -258,6 +251,13 @@ const App = () => {
             <CircularProgress />
           </Box>
         )}
+      <SplitPane
+        split="horizontal" // or "vertical" based on your layout
+        defaultSize="50%"
+        minSize={100}
+        maxSize={400}
+        style={{ position: 'relative', width: '100%', height: '100%' }}
+      >
         <MillerColumns columns={columns} onItemSelected={handleItemSelected} isLoading={loading}/>
         <Box sx={{ position: 'relative', paddingBottom: '60px' }}>
           <Tooltip title="Copy Data">
