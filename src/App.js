@@ -259,7 +259,7 @@ const App = () => {
           </Box>
         )}
         <MillerColumns columns={columns} onItemSelected={handleItemSelected} isLoading={loading}/>
-        <Box sx={{ position: 'relative' }}>
+        <Box sx={{ position: 'relative', paddingBottom: '60px' }}>
           <Tooltip title="Copy Data">
             <IconButton
               onClick={() => navigator.clipboard.writeText(dataView)}
