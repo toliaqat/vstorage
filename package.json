@@ -1,8 +1,8 @@
 {
-  "name": "vstorage-reactjs",
+  "name": "vstorage",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://toliaqat.github.io/vstorage",
+  "homepage": "https://vstorage.agoric.net/",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
