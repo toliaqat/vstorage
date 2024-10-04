@@ -1,7 +1,7 @@
 const defaultPath = "/custom/vstorage/children/";
 
 export const fetchChildren = async (apiEndpoint, path, blockHeight) => {
-  const url = `${apiEndpoint}`;
+  const url = `${apiEndpoint.replace('.api.', '.rpc.')}`;
 
   const requestBody = {
     jsonrpc: "2.0",
@@ -35,7 +35,7 @@ export const fetchChildren = async (apiEndpoint, path, blockHeight) => {
 };
 
 export const fetchData = async (apiEndpoint, path, blockHeight) => {
-  const url = `${apiEndpoint}`;
+  const url = `${apiEndpoint.replace('.api.', '.rpc.')}`;
   const requestBody = {
     jsonrpc: "2.0",
     id: 1,
