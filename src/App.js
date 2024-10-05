@@ -180,6 +180,11 @@ const App = () => {
                   return newValue;
                 });
               }}
+              size="small"
+              disabled={!blockHeight}
+              color="inherit"
+              aria-label="increase block height"
+              sx={{ ml: 0.1 }}
             >
               <RemoveIcon />
             </IconButton>
