@@ -50,7 +50,7 @@ const App = () => {
   const [path, setPath] = useState(searchParams.get("path"));
   const [columns, setColumns] = useState(getInitialColumns(path));
   const [dataView, setDataView] = useState("");
-  const [blockHeight, setBlockHeight] = useState("");
+  const [blockHeight, setBlockHeight] = useState(searchParams.get("height") || null);
   const [currentBlockHeight, setCurrentBlockHeight] = useState("");
   const initialEndpoint = searchParams.get("endpoint") || apiEndpoints[0].value;
   const [apiEndpoint, setApiEndpoint] = useState(initialEndpoint);
@@ -114,6 +114,10 @@ const App = () => {
   useEffect(() => {
     updateQueryParam("endpoint", apiEndpoint);
   }, [apiEndpoint]);
+
+  useEffect(() => {
+    updateQueryParam("height", blockHeight);
+  }, [blockHeight]);
 
   const handleItemSelected = async (itemName, columnIndex) => {
     // Return early if the item is already selected
@@ -183,6 +187,7 @@ const App = () => {
               type="number"
               inputMode="numeric"
               step="any"
+              value={blockHeight}
               placeholder="Set Height (Optional)"
               onChange={(e) => {
                 setBlockHeight(e.target.value);
