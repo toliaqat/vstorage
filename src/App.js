@@ -181,7 +181,7 @@ const App = () => {
                 });
               }}
               size="small"
-              disabled={isNaN(blockHeight)}
+              disabled={blockHeight === null}
               color="inherit"
               aria-label="increase block height"
               sx={{ ml: 0.1 }}
@@ -216,7 +216,7 @@ const App = () => {
                 });
               }}
               size="small"
-              disabled={isNaN(blockHeight)}
+              disabled={blockHeight === null}
               color="inherit"
               aria-label="increase block height"
               sx={{ ml: 0.1 }}

@@ -1,6 +1,6 @@
 // config.js
 const apiEndpoints = [
-  { label: "Mainnet", value: "https://main.rpc.agoric.net:443" },
+  { label: "Mainnet", value: "https://main-a.rpc.agoric.net:443" },
   { label: "Emerynet", value: "https://emerynet.rpc.agoric.net:443" },
   { label: "Devnet", value: "https://devnet.rpc.agoric.net:443" },
   { label: "Xnet", value: "https://xnet.rpc.agoric.net:443" },
