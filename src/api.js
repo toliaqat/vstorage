@@ -74,3 +74,42 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     return "Failed to fetch data";
   }
 };
+export const fetchWalletIdByVaultId = async (vaultId) => {
+  const query = {
+    query: `
+      {
+        vaults(
+          filter: {id: {equalTo: "${vaultId}"}}
+        ) {
+          nodes {
+            id
+            walletId
+          }
+        }
+      }
+    `,
+  };
+
+  try {
+    const response = await fetch("https://api.subquery.network/sq/agoric-labs/agoric-mainnet-v2", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(query),
+    });
+
+    if (!response.ok) throw new Error("Network response was not ok");
+
+    const jsonResponse = await response.json();
+    const nodes = jsonResponse.data.vaults.nodes;
+    if (nodes.length > 0) {
+      return nodes[0].walletId;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Fetching wallet ID error:", error);
+    return null;
+  }
+};
