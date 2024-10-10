@@ -58,6 +58,11 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     console.log("fetchData response:", jsonResponse);
     if (jsonResponse.result.response.code !== 0) {
       return null;
+      return {
+        data: parsedData,
+        blockHeight: jsonResponse.result.response.height,
+        walletId: walletId,
+      };
     }
     const base64Value = jsonResponse.result.response.value;
     let parsedData = JSON.parse(atob(base64Value));
