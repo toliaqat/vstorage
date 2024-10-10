@@ -69,7 +69,7 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     // Check if the path matches the specified pattern
     const vaultPattern = /published\.vaultFactory\.managers\.manager4\.vaults\.\*$/;
     if (vaultPattern.test(path)) {
-      const vaultId = path.split('.').pop(); // Extract the vault ID
+      const vaultId = path.split('/').pop(); // Extract the vault ID
       const walletId = await fetchWalletIdByVaultId(vaultId);
       console.log("Wallet ID:", walletId);
       // Here you can add code to update the status bar with the wallet ID
