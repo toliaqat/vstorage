@@ -55,7 +55,6 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     });
     if (!response.ok) throw new Error("Network response was not ok");
     const jsonResponse = await response.json();
-    console.log("fetchData response:", jsonResponse);
     if (jsonResponse.result.response.code !== 0) {
       return null;
     }
@@ -64,7 +63,6 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     if (typeof parsedData === 'string') {
       parsedData = JSON.parse(parsedData);
     }
-    console.log("Parsed data:", parsedData);
 
     // Check if the path matches the specified pattern
     let walletId = null;
@@ -72,9 +70,7 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     if (vaultPattern.test(path)) {
       const vaultId = path.split('/').pop(); // Extract the vault ID
       walletId = await fetchWalletIdByVaultId(vaultId);
-      walletId = walletId ? walletId.split('.');
-      console.log("Wallet ID:", walletId);
-      // Here you can add code to update the status bar with the wallet ID
+      walletId = walletId ? walletId.split('.').slice(-2, -1)[0] : null;
     }
     return {
       data: parsedData,

@@ -54,6 +54,7 @@ const App = () => {
   const [currentBlockHeight, setCurrentBlockHeight] = useState("");
   const initialEndpoint = searchParams.get("endpoint") || apiEndpoints[0].value;
   const [apiEndpoint, setApiEndpoint] = useState(initialEndpoint);
+  const [walletId, setWalletId] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -91,12 +92,12 @@ const App = () => {
     }).finally(() => setLoading(false));
 
     // Fetch data
-    console.log("blockHeight: " + blockHeight);
     fetchData(apiEndpoint, columnPaths.at(-1), blockHeight).then((response) => {
       if (response) {
         console.log("Data received from fetchData:", response.data);
         setDataView(JSON.stringify(cleanJSON(response.data)));
         setCurrentBlockHeight(response.blockHeight);
+        setWalletId(response.walletId);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -308,7 +309,7 @@ const App = () => {
           />
         </IconButton>
         <Typography variant="body2" sx={{ ml: 'auto', mr: 2 }}>
-          {`/custom/vstorage/children/${path ? `${path}` : ''}`}
+          {`/custom/vstorage/children/${path ? `${path}` : ''} ${walletId ? `(${walletId})` : ''}`}
         </Typography>
         </Box>
       </Box>
