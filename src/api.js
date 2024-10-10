@@ -58,11 +58,6 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     console.log("fetchData response:", jsonResponse);
     if (jsonResponse.result.response.code !== 0) {
       return null;
-      return {
-        data: parsedData,
-        blockHeight: jsonResponse.result.response.height,
-        walletId: walletId,
-      };
     }
     const base64Value = jsonResponse.result.response.value;
     let parsedData = JSON.parse(atob(base64Value));
@@ -72,16 +67,18 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     console.log("Parsed data:", parsedData);
 
     // Check if the path matches the specified pattern
+    let walletId = null;
     const vaultPattern = /published\.vaultFactory\.managers\.manager[0-9]\.vaults.vault[0-9]+/;
     if (vaultPattern.test(path)) {
       const vaultId = path.split('/').pop(); // Extract the vault ID
-      const walletId = await fetchWalletIdByVaultId(vaultId);
+      walletId = await fetchWalletIdByVaultId(vaultId);
       console.log("Wallet ID:", walletId);
       // Here you can add code to update the status bar with the wallet ID
     }
     return {
       data: parsedData,
       blockHeight: jsonResponse.result.response.height,
+      walletId
     };
   } catch (error) {
     console.error("Fetching data error:", error, "Request body:", requestBody);
