@@ -67,7 +67,7 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     console.log("Parsed data:", parsedData);
 
     // Check if the path matches the specified pattern
-    const vaultPattern = /published\.vaultFactory\.managers\.manager4\.vaults\.\*$/;
+    const vaultPattern = /published\.vaultFactory\.managers\.manager[0-9]\.vaults.vault[0-9]+/;
     if (vaultPattern.test(path)) {
       const vaultId = path.split('/').pop(); // Extract the vault ID
       const walletId = await fetchWalletIdByVaultId(vaultId);
