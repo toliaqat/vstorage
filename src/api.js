@@ -67,7 +67,7 @@ export const fetchData = async (apiEndpoint, path, blockHeight) => {
     // Check if the path matches the specified pattern
     let walletId = null;
     const vaultPattern = /published\.vaultFactory\.managers\.manager[0-9]\.vaults.vault[0-9]+/;
-    if (vaultPattern.test(path)) {
+    if (vaultPattern.test(path) && (apiEndpoint.includes("main-a.rpc.agoric.net") || apiEndpoint.includes("main.rpc.agoric.net"))) {
       const vaultId = path.split('/').pop(); // Extract the vault ID
       walletId = await fetchWalletIdByVaultId(vaultId);
       walletId = walletId ? walletId.split('.').slice(-2, -1)[0] : null;
