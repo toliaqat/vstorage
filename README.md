@@ -1,5 +1,7 @@
 # VStorage Viewer
 
+**NOTE: The project is now active at https://github.com/agoric-labs/vstorage-viewer/**
+
 This is a web application designed to explore and visualize VStorage. It provides an intuitive interface for navigating through data layers and viewing detailed information.
 
 ## Build Steps
